@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday Akka 🌸</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+
+  <!-- Main Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet"/>
+
+  <!-- ⭐ New font for "Something Beautiful Awaits" -->
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600&display=swap" rel="stylesheet"/>
+
+  <link rel="stylesheet" href="akka.css"/>
+</head>
+<body>
+
+  <!-- Petals animation -->
+  <div class="petals" id="petals" hidden aria-hidden="true"></div>
+
+  <!-- Reveal gate -->
+  <div id="intro-gate">
+    <div class="gate-content">
+      <h1 class="beautiful-text">My dearest friend, Asha 🎉</h1>
+      <button id="open-button">This is for YOU 🎂</button>
+    </div>
+  </div>
+
+  <!-- Main content -->
+  <main id="birthday-page" hidden aria-hidden="true">
+    <div class="content-wrapper">
+      <h1 class="title">Happy Birthday</h1>
+      <h2 class="name">Asha</h2>
+
+      <img src="background.jpg" alt="Akka's Photo" class="photo"/>
+
+      <div class="message">
+        <p><b>Happy Birthday to the most wonderful friend. Your presence in my life is truly a gift, filling every moment with your warmth and light. I celebrate you today, the rare, beautiful soul who is endlessly caring, always putting others first, and who possesses a depth of feeling that makes our bond so incredibly real. Simply being the genuine, lovable person you are. May this year bring you all the heartfelt joy, comfort, and success you deserve, and may you continue that beautiful, emotional spirit that makes you uniquely cherished. Stay elated always. I will be your side on all your hards. Stay positive always. Once again happy birthday. Enjoy your Day 🎉✨️🎂🍫🎶💃</b></p>
+
+
+        <p>-With love Wikkee 🤍</p>
+      </div>
+    </div>
+  </main>
+
+  <audio id="bgm" src="wikki.mp3" loop preload="auto"></audio>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const openButton = document.getElementById('open-button');
+      const introGate = document.getElementById('intro-gate');
+      const birthdayPage = document.getElementById('birthday-page');
+      const petals = document.getElementById('petals');
+      const bgm = document.getElementById('bgm');
+
+      openButton.addEventListener('click', async () => {
+        introGate.classList.add('hidden');
+        try { await bgm.play(); } catch(e) {}
+
+        setTimeout(() => {
+          introGate.style.display = 'none';
+          petals.hidden = false;
+          birthdayPage.hidden = false;
+
+          requestAnimationFrame(() => {
+            birthdayPage.classList.add('active');
+          });
+
+          const createPetal = () => {
+            const petal = document.createElement('div');
+            petal.className = 'petal';
+            petal.style.left = Math.random() * 100 + 'vw';
+            petal.style.animationDuration = (6 + Math.random() * 5) + 's';
+            petal.style.opacity = Math.random();
+            petals.appendChild(petal);
+            setTimeout(() => petal.remove(), 10000);
+          };
+          setInterval(createPetal, 300);
+        }, 1000);
+      });
+    });
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
